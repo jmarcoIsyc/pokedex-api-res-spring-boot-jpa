@@ -3,10 +3,10 @@ version: '3'
 services:
   pokedex-mysql:
     image: mysql:5.7
-    container_name: pokedex-mysql
+    container_name: jmarco-pokedex-mysql
     restart: always
     ports:
-      - 3306:3306
+      - 3309:3306
     environment:
       - MYSQL_ROOT_PASSWORD=example
       - MYSQL_DATABASE=test
@@ -14,9 +14,9 @@ services:
       - MYSQL_PASSWORD=root
       #- MYSQL_ROOT_HOST= '%'
   pokedex:
-    container_name: pokedex-api-rest
+    container_name: jmarco-pokedex-api-rest
     restart: always
-    image: pepesan/pokedex-microservice:latest
+    image: imagen_jmarco:1
     #build: .
     #build:
     #      context: ./
@@ -24,7 +24,7 @@ services:
     depends_on:
       - pokedex-mysql
     ports:
-      - 8080:8080
+      - 8089:8080
     environment:
       #- "SPRING_PROFILES_ACTIVE=default"
       #- SPRING_DATASOURCE_URL=jdbc:mysql://pokedex-mysql:3306/test
